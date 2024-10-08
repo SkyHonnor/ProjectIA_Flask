@@ -1,0 +1,43 @@
+{% extends 'layout.html'%}
+
+{% block title %}
+Scikit
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h1 class="text-center">{{name}} - Dataset <form method="post"><button class="btn" type="submit"><img style="height: 30px;" src="{{ url_for('static', filename='img/random.svg') }}"></button></form></h1>
+        <div class="scrollable-container">
+            {% if randomrowtable %}
+                {{ randomrowtable|safe }}
+            {% endif %}
+            {{ table|safe }}
+        </div>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

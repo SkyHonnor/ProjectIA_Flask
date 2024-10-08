@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg " style="background-color: #addafad8;">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-semibold  p-3 rounded" style="background-color: #2297eb49;" href="/">
+      <img src="{{ url_for('static', filename='img/python.png') }}" width="50" height="50">
+       Prog avancée</a>
+    <div class="collapse navbar-collapse fs-5" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{{ url_for('main_page.index') }}"><img height="25px" src="{% if request.path == '/' %}{{url_for('static', filename='img/homeactive.svg')}}{% else %}{{url_for('static', filename='img/home.svg')}}{% endif %}"></a>
+        </li>
+        <li class="p-2 nav-item">
+          <a class="nav-link {% if request.path.startswith('/temperature') %}active{% endif %}" href="{{ url_for('temperature_page.index') }}">Température</a>
+        </li>
+        <li class="p-2 nav-item dropdown">
+          <a class="nav-link dropdown-toggle {% if request.path.startswith('/scikit') %}active{% endif %}" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" >Scikit Datasets</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('scikit_page.iris') }}">IRIS - Dataset</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('scikit_page.diabetes') }}">DIABETE - Dataset </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('scikit_page.digits') }}">DIGITS - Dataset </a></li>
+          </ul>
+        </li>
+        <li class="p-2 nav-item dropdown">
+          <a class="nav-link dropdown-toggle {% if request.path.startswith('/chinook') %}active{% endif %}" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" >Chinook Database</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('chinook_page.artists') }}">Artistes</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('chinook_page.albums') }}">Albums</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('chinook_page.artists_with_albums') }}">Artiste avec Albums</a></li>
+          </ul>
+        </li>
+        <li class="p-2 nav-item dropdown">
+          <a class="nav-link dropdown-toggle {% if request.path.startswith('/influxdb') %}active{% endif %}" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" >InfluxDB</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('influxdb_page.bitcoin') }}">Bitcoin</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

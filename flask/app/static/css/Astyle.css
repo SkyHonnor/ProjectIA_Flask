@@ -1,0 +1,73 @@
+body {
+    padding: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    
+}
+
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 50px;
+    box-shadow: rgba(16, 110, 172, 0.2) 0px 54px 55px, rgba(16, 110, 172, 0.2) 0px -12px 30px, rgba(16, 110, 172, 0.2) 0px 4px 6px, rgba(16, 110, 172, 0.2) 0px 12px 13px, rgba(16, 110, 172, 0.2) 0px -3px 5px;
+}
+
+.resultat{
+    color: #010a13;
+    font-size: larger;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.div1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.divpuissante {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 70px;
+}
+
+.rangeinput{
+    width: 300px;
+}
+
+h1 {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #474747;
+    font-size: larger
+}
+
+input[type="submit"] {
+    background-color: #9fc1e5;
+    border: 1px solid #693d3d;
+    border-radius:5px;
+    padding: 15px 32px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: larger;
+    font-weight: 700;
+    cursor: pointer;
+
+}
+
+h2 {
+    margin-top: 20px;
+    color: #1f7bde;
+}

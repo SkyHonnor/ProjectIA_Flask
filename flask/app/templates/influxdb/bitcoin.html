@@ -1,0 +1,17 @@
+{% extends 'layout.html'%}
+
+{% block title %}
+Bitcoin Influx
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h1 class="text-center">Bitcoin</h1>
+        <div class="container text-center">
+            <img src="{{ url_for('static', filename='img/bitcoin_plot.png') }}">
+        </div>
+        <div class="scrollable-container">{{ table|safe }}</div>
+    </div>
+    
+{% endblock %}

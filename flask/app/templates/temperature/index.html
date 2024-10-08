@@ -1,0 +1,48 @@
+{% extends 'layout.html'%}
+
+{% block title %}
+Temperature
+{% endblock %}
+
+{% block content %}
+    <div class="w-auto h-100 text-center">
+        <h1>Calcul de la Température Ressentie</h1>
+        <form method="POST">
+            <div class="container d-flex justify-content-evenly p-5">
+                <div>
+                    <label for="temperature">Température (<span id="temperaturevalue">{{ temperature }}</span>°C):</label>
+                    <input class="form-range" min="27" max="45" type="range" id="temperature" name="temperature" value="{{ temperature }}" required>
+                </div>   
+                <diV>
+                    <label for="humidite">Humidité (<span id="humiditevalue">{{ humidite }}</span>%):</label>
+                    <input class="form-range" min="40" max="100" type="range" id="humidite" name="humidite" value="{{ humidite }}" required>
+                    
+                </div>
+            </div>
+            
+            <input type="submit" class="btn btn-primary btn-lg m-4" value="Calculer">
+        </form>
+        <h2>Température Ressentie:</h2>
+        <div class="d-flex justify-content-center fs-3">
+            <p class="m-4">
+                {{ indicedegc }}{% if indicedegc == null %}--{% endif %} °C
+            </p>
+            <p class="m-4">
+                {{ indicedegf }}{% if indicedegf == null %}--{% endif %} °F
+            </p>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script>
+    $("#temperature").on("input", function() {
+        $("#temperaturevalue").text($(this).val())
+    })
+    $("#humidite").on("input", function() {
+        $("#humiditevalue").text($(this).val())
+    })
+</script>
+
+
+{% endblock %}
+
+

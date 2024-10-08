@@ -1,0 +1,41 @@
+{% extends 'layout.html'%}
+
+{% block title %}
+Chinook
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center">{{ name }} ({{ data|length }})</h1>
+    <ul>
+        {% if name == 'Artistes' %}
+
+        {% for artist in data %}
+        <li>{{ artist.Name }}</li>
+        {% endfor %}
+
+        {% elif name == 'Albums' %}
+
+        {% for album in data %}
+        <li>{{ album.Title }}</li>
+        {% endfor %}
+
+        {% else %}
+
+        {% for artist in data %}
+        <li>
+            {{ artist.Name }}
+            <ul>
+                {% for album in artist.albums %}
+                <li>{{ album.Title }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+
+        {% endif %}
+    </ul>
+</div>
+
+{% endblock %}

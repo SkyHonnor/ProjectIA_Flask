@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <title>{% block title %}{% endblock %} | Group1</title>
+    <style>
+        .scrollable-container {
+            max-height: calc(100vh - 100px); /* Ajustez cette valeur selon vos besoins */
+            overflow-y: auto;
+            padding: 1rem; /* Ajoutez du padding pour éviter que le contenu ne touche les bords */
+        }
+    </style>
+</head>
+<body>
+    <header>
+    {% include 'navbar.html'%}
+    </header>
+    {% block content %}{% endblock %}
+</body>
+</html>

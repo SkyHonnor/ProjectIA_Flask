@@ -1,0 +1,31 @@
+{% extends 'layout.html'%}
+
+{% block title %}
+Scikit
+{% endblock %}
+
+{% block content %}
+
+    <body>
+        <h1>RF</h1>
+        
+        <form method="POST">
+            <label for="dataset">Choisir le jeu de données :</label>
+            <select name="dataset" id="dataset">
+                <option value="digits">Digits</option>
+                <option value="iris">Iris</option>
+                <option value="diabetes">Diabetes</option>
+            </select><br><br>
+
+            <label for="test_size">Taille du jeu de test (entre 0 et 1) :</label>
+            <input type="number" step="0.01" name="test_size" value="0.1"><br><br>
+
+            <label for="n_estimators">Nombre d'arbres :</label>
+            <input type="number" name="n_estimators" value="10"><br><br>
+
+            <button class="btn btn-primary" type="submit">Entraîner le modèle</button>
+        </form>
+    </body>
+    </html>
+
+{% endblock %}
