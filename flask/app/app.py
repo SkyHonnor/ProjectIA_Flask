@@ -29,4 +29,4 @@ from routes import route_main
 app.register_blueprint(route_main.main_page)
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",port=5001, debug=True)
+    app.run(host="0.0.0.0",port=80, debug=True)
