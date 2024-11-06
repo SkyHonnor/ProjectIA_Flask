@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Classifieur RF
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Entraîner un Random Forest Model</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for="dataset">Choisir un dataset :</label>
+            <select class="form-control" id="dataset" name="dataset" required>
+                <option value="iris" {% if dataset=='iris' %}selected{% endif %}>Iris</option>
+                <option value="diabetes" {% if dataset=='diabetes' %}selected{% endif %}>Diabetes</option>
+                <option value="digits" {% if dataset=='digits' %}selected{% endif %}>Digits</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="test_size">Test Size (0.1 - 0.9) :</label>
+            <input type="number" step="0.1" class="form-control" id="test_size" name="test_size" value="{{ test_size }}" min="0.1" max="0.9" required>
+        </div>
+
+        <div class="form-group">
+            <label for="n_estimators">Number of Estimators (1 - 100) :</label>
+            <input type="number" class="form-control" id="n_estimators" name="n_estimators" value="{{ n_estimators }}" min="1" max="100" required>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-primary">Entraîner le Modèle</button>
+        </div>
+    </form>
+
+    {% if table %}
+    <div class="container scrollable-container mt-4">
+        <h2>Résultat</h2>
+        {% if dataset == 'diabetes' %}
+            <p><strong>Erreur Quadratique Moyenne (MSE) :</strong> {{ table.MSE }}</p>
+        {% else %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>precision</th>
+                    <th>recall</th>
+                    <th>f1-score</th>
+                    <th>support</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, ligne in table.items() %}
+                <tr>
+                    <td><strong>{{ key }}</strong></td>
+                    {% if key == 'accuracy' %}
+                    <td></td>
+                    <td></td>
+                    <td><strong>{{ ligne }}</strong></td>
+                    <td></td>
+                    {% else %}
+                    <td>{{ ligne.precision }}</td>
+                    <td>{{ ligne.recall }}</td>
+                    <td>{{ ligne['f1-score'] }}</td>
+                    <td>{{ ligne.support }}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

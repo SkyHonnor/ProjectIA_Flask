@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Entraîner le Modèle MNIST
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Entraîner le Modèle MNIST</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for="activation">Fonction d'Activation :</label>
+            <select class="form-control" id="activation" name="activation" required>
+                <option value="relu" selected>ReLU</option>
+                <option value="sigmoid">Sigmoid</option>
+                <option value="tanh">Tanh</option>
+                <option value="softmax">Softmax</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="hidden_layers">Nombre de Couches Cachées :</label>
+            <input type="number" class="form-control" id="hidden_layers" name="hidden_layers" value="3" required>
+        </div>
+        {% if alert %}
+        <div class="alert alert-danger" role="alert">
+            {{ alert }}
+        </div>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="neurons">Nombre de Neurones (séparés par des virgules, pour chaque couche) :</label>
+            <input type="text" class="form-control" id="neurons" name="neurons" value="128,64,32" required>
+        </div>
+
+        <div class="form-group">
+            <label for="loss">Fonction de Perte :</label>
+            <select class="form-control" id="loss" name="loss" required>
+                <option value="categorical_crossentropy" selected>Entropie Croisée Catégorielle</option>
+                <option value="mean_squared_error">Erreur Quadratique Moyenne</option>
+                <option value="binary_crossentropy">Entropie Croisée Binaire</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="optimizer">Optimiseur :</label>
+            <select class="form-control" id="optimizer" name="optimizer" required>
+                <option value="adam" selected>Adam</option>
+                <option value="sgd">SGD</option>
+                <option value="rmsprop">RMSProp</option>
+                <option value="adagrad">Adagrad</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="batch_size">Taille du Lot :</label>
+            <input type="number" class="form-control" id="batch_size" name="batch_size" value="64" required>
+        </div>
+
+        <div class="form-group">
+            <label for="epochs">Époques :</label>
+            <input type="number" class="form-control" id="epochs" name="epochs" value="10" required>
+        </div>
+
+        <div class="form-group">
+            <label for="validation_split">Division de Validation :</label>
+            <input type="number" step="0.01" class="form-control" id="validation_split" name="validation_split"
+                value="0.2" required>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-primary">Entraîner le Modèle</button>
+        </div>
+    </form>
+
+    {% if test_loss is not none and test_accuracy is not none %}
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Perte de Test : {{ test_loss }}</h5>
+            <h5 class="card-title">Précision de Test : {{ test_accuracy }}</h5>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

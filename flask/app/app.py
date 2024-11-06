@@ -22,8 +22,11 @@ app.register_blueprint(route_chinook.chinook_page, url_prefix="/chinook")
 from routes import route_influxdb
 app.register_blueprint(route_influxdb.influxdb_page, url_prefix="/influxdb")
 
+from routes import route_classifieur
+app.register_blueprint(route_classifieur.classifieur_page, url_prefix="/classifieur")
+
 from routes import route_main
 app.register_blueprint(route_main.main_page)
 
 if __name__ == '__main__':
-    app.run(port=5001, debug=True)
+    app.run(host="0.0.0.0",port=5001, debug=True)

@@ -33,6 +33,13 @@
             <li><a class="dropdown-item" href="{{ url_for('influxdb_page.bitcoin') }}">Bitcoin</a></li>
           </ul>
         </li>
+        <li class="p-2 nav-item dropdown">
+          <a class="nav-link dropdown-toggle {% if request.path.startswith('/classifieur') %}active{% endif %}" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" >Classifieur</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('classifieur_page.index') }}">Classifieur RF</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('classifieur_page.ml') }}">Classifieur ML</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
