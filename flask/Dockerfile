@@ -12,4 +12,6 @@ COPY . .
 
 EXPOSE 80
 
-CMD [ "python", "app/app.py" ]
+WORKDIR /projet/app
+
+CMD [ "python", "app.py" ]
